@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nini bookstore</title>
+    <style>
+    body {
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        position: relative;
+        z-index: 0;
+    }
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://t3.ftcdn.net/jpg/03/44/52/84/360_F_344528412_kCNXLrHETwxS0ztSTcD6N4Z09FZGpOdQ.jpg'); /* Change to your image path */
+        background-repeat: repeat;
+        opacity: 0.05; /* Adjust for desired transparency */
+        z-index: -1;
+    }
+
+    header{
+        display: flex;
+        background-color: #23a4ff;
+        justify-content: space-between;
+        color: white;
+        position: sticky;
+    }
+    header h1{
+        margin-left: 20px;
+        font-size: 1.5rem;
+    }
+    .logo-area{
+        display: flex;
+        align-items: center;
+    }
+    .logo-area a {
+        color: white;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: 600;
+        margin-right: 20px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .logo-area a:hover {
+        color: #ff6102; 
+    }
+    .logo-area img{
+        width:50px;
+        height: auto;
+        margin-left: 20px;
+    }
+    section {
+      padding: 2rem 2rem;
+    }
+
+    #about {
+        padding: 2rem 1rem 1rem 1rem; 
+    }
+
+    .about-wrapper {
+        max-width: 800px;  
+        margin: 0 auto;    
+        text-align: center;
+        color: #604229;
+    }
+
+    #featured {
+        padding: 1rem 1rem 3rem 1rem;
+    }
+    #featured h2 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+    .hero {
+        background-color: #ffe8d2;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 5vh; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #604229;
+    }
+    .hero-text {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 12px;
+        border-radius: 12px;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    }
+    .hero h2 {
+        font-size: 2.2rem;
+        margin: 0.3rem 0;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+    }
+
+    th, td {
+        border: 1px solid #ccc;
+        padding: 0.75rem;
+        text-align: left;
+    }
+
+    th {
+        background-color: #23a4ff;
+        color: white;
+    }
+
+    td {
+        background-color: #f9f9f9;
+    }
+    .book-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .book-card {
+        background-color: #fff8f1;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        text-align: center;
+        padding: 1rem;
+        transition: transform 0.2s ease;
+    }
+
+    .book-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .book-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .book-card h3 {
+        margin: 0.5rem 0 0.2rem;
+        font-size: 1.1rem;
+    }
+
+    .book-card p {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .book-card button {
+        margin-top: 0.8rem;
+        background-color: #ff6102;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .book-card button:hover {
+        background-color: #e25900;
+    }
+    .recobutton {
+        margin-top: 0.8rem;
+        background-color: #60a2ff;
+        color: white;
+        border: none;
+        padding: 1rem 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 20px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+
+    </style>
+</head>
+<body>
+    <header style="box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;" id="head">
+        <div class="logo-area">
+            <img src="./logofull.png" alt="logo">
+            <h1>nini bookstore</h1>
+        </div>
+        <div class="logo-area">
+            <a href="#head">Home</a>
+            <a href="#featured">Featured</a>
+            <a href="#books">Books</a>
+            <a href="#reco">Recommend</a>
+            <a href="#contacts">Contact</a>
+
+        </div>
+    </header>
+
+<section id="home" class="hero">
+  <div class="hero-text">
+    <h2> SHARE A BOOK </h2>
+    <h2>  START A JOURNEY  </h2>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-wrapper">
+    <p>
+      nini bookstore is a warm, reader-friendly space where stories come to life. From timeless classics to hidden gems, we offer books that spark curiosity, comfort, and connection. Share your favorite stories with us.
+    </p>
+  </div>
+</section>
+
+
+<section id="featured">
+  <h2 style="text-align: center; color:#4e4021; font-size: 2rem;">Featured Books</h2>
+  <div class="book-grid" id="bookGrid"></div>
+</section>
+
+<section id="books">
+  <h2>Available Books</h2>
+  <table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Price</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>No Longer Human</td>
+        <td>Osamu Dazai</td>
+        <td>Psychological Fiction</td>
+        <td>₱450.00</td>
+        <td>In Stock</td>
+    </tr>
+    <tr>
+        <td>The Love Hypothesis</td>
+        <td>Ali Hazelwood</td>
+        <td>Romance</td>
+        <td>₱520.00</td>
+        <td>In Stock</td>
+    </tr>
+    <tr>
+        <td>I Decided to Live as Me</td>
+        <td>Kim Soo-Hyun</td>
+        <td>Self-Help</td>
+        <td>₱390.00</td>
+        <td>In Stock</td>
+    </tr>
+    <tr>
+        <td>The Idiot</td>
+        <td>Fyodor Dostoevsky</td>
+        <td>Classic Literature</td>
+        <td>₱430.00</td>
+        <td>In Stock</td>
+    </tr>
+
+      <tr>
+        <td>Atomic Habits</td>
+        <td>James Clear</td>
+        <td>Self-Help</td>
+        <td>₱550.00</td>
+        <td>In Stock</td>
+      </tr>
+      <tr>
+        <td>Notes from Underground</td>
+        <td>Fyodor Dostoevsky</td>
+        <td>Classic Literature</td>
+        <td>₱390.00</td>
+        <td>In Stock</td>
+    </tr>
+
+    <tr>
+        <td>Happy Place</td>
+        <td>Emily Henry</td>
+        <td>Romance</td>
+        <td>₱480.00</td>
+        <td>In Stock</td>
+    </tr>
+    <tr>
+        <td>The Hobbit</td>
+        <td>J.R.R. Tolkien</td>
+        <td>Fantasy</td>
+        <td>₱500.00</td>
+        <td>In Stock</td>
+    </tr>  
+    <tr>
+        <td>The Little Prince</td>
+        <td>Antoine de Saint-Exupéry</td>
+        <td>Fable / Philosophy</td>
+        <td>₱250.00</td>
+        <td>In Stock</td>
+    </tr>
+
+    <tr>
+        <td>If You Could See the Sun</td>
+        <td>Ann Liang</td>
+        <td>Young Adult</td>
+        <td>₱420.00</td>
+        <td>In Stock</td>
+    </tr>
+
+    </tbody>
+  </table>
+</section>
+
+
+
+
+<button onclick="toggleForm()" class="recobutton" style="margin: 2rem auto; display: block;" id="reco">Recommend a Book</button>
+
+<div id="formContainer" style="display: none;">
+  <form id="googleForm">
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+      <div style="margin: 20px; width: 100%; max-width: 500px; background-color: #fff8f1; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+        <fieldset style="border: none; display: flex; flex-direction: column; gap: 1.2rem;">
+          <legend style="font-size: 1.4rem; font-weight: 700; color: #604229; margin-bottom: 1rem;">Recommend a Book</legend>
+
+            <!-- Name -->
+            <label style="display: flex; flex-direction: column; font-weight: 600; color: #4e4021;">
+                Your Full Name:
+                <input type="text" name="name" required style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; margin-top: 0.3rem; font-family: 'Montserrat', sans-serif;">
+            </label>
+
+            <!-- Email -->
+            <label style="display: flex; flex-direction: column; font-weight: 600; color: #4e4021;">
+                Your Email:
+                <input type="email" name="email" required style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; margin-top: 0.3rem; font-family: 'Montserrat', sans-serif;">
+            </label>
+
+            <!-- Age -->
+            <label style="display: flex; flex-direction: column; font-weight: 600; color: #4e4021;">
+                Your Age:
+                <input type="number" name="age" min="10" max="100" required style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; margin-top: 0.3rem; font-family: 'Montserrat', sans-serif;">
+            </label>
+
+            <!-- Gender -->
+            <div style="display: flex; flex-direction: column; font-weight: 600; color: #4e4021;">
+                <label style="margin-bottom: 8px;">Gender</label>
+                <div style="display: flex; gap: 20px;">
+                <label>
+                    <input type="radio" name="gender" value="Male" required>
+                    Male
+                </label>
+                <label>
+                    <input type="radio" name="gender" value="Female">
+                    Female
+                </label>
+                </div>
+            </div>
+
+          <!-- Book Title -->
+        <label style="display: flex; flex-direction: column; font-weight: 600; color: #4e4021;">
+            Book Title:
+            <input type="text" name="bookTitle" required style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; margin-top: 0.3rem; font-family: 'Montserrat', sans-serif;">
+        </label>
+        <label style="display: flex; flex-direction: column; font-weight: 600; color: #4e4021;">
+            Author:
+            <input type="text" name="author" required style="padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; margin-top: 0.3rem; font-family: 'Montserrat', sans-serif;">
+        </label> 
+          <!-- Genre -->
+          <label style="display: flex; flex-direction: column; font-weight: 600; color: #4e4021; margin-bottom: 1rem;">
+            Genre:
+            <select name="genre" required style="margin-top: 8px; padding: 10px; border: 1px solid #f3f3f3; border-radius: 6px; font-size: 1rem; background-color: #fefefd; color: #4e4021; font-family: 'Montserrat', sans-serif; box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);">
+                <option value="">--Please choose--</option>
+                <option value="Action/Adventure">Action/Adventure</option>
+                <option value="Classic Literature">Classic Literature</option>
+                <option value="Fable">Fable</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Historical Fiction">Historical Fiction</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Psychological Fiction">Psychological Fiction</option>
+                <option value="Romance">Romance</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Self Help">Self Help</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Young Adult">Young Adult</option>
+                <option value="Others">Others</option>
+            </select>
+        </label>
+        <label style="display: flex; flex-direction: column; font-weight: 600; color: #4e4021; ">
+            Why do you recommend this book?
+            <textarea name="comments" rows="4" style="resize: none; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; margin-top: 0.3rem; font-family: 'Montserrat', sans-serif;"></textarea>
+        </label>
+
+          <button type="submit" style="background-color: #ff6102; color: white; border: none; padding: 0.7rem 1rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.3s ease;">
+            Submit
+          </button>
+        </fieldset>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<footer>
+  <section id="contacts" class="hero" style="display: flex; justify-content: center; padding: 20px; background: #23a4ff;">
+    <div class="social-icons" style="display: flex; gap: 20px;">
+      <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+        <i class="fab fa-facebook-f" style="color: #ffffff; font-size: 1.5rem;"></i>
+      </a>
+      <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram" style="color: #ffffff; font-size: 1.5rem;"></i>
+      </a>
+    </div>
+  </section>
+</footer>
+
+
+<script>
+  function toggleForm() {
+    const form = document.getElementById("formContainer");
+    form.style.display = form.style.display === "none" ? "block" : "none";
+  }
+
+  const books = [
+    {
+      title: "No Longer Human",
+      author: "Osamu Dazai",
+      img: "https://cdn.kobo.com/book-images/6963d990-cef3-4c05-8709-a6e79c4a0967/1200/1200/False/no-longer-human.jpg",
+      genre: "Psychological Fiction"
+    },
+    {
+      title: "The Idiot",
+      author: "Fyodor Dosteyevsky",
+      img: "https://cdn.kobo.com/book-images/822bb814-70a7-4d36-8f73-9fb1d9230632/1200/1200/False/the-idiot-30.jpg",
+      genre: "Classical Literature"
+    },
+    {
+      title: "The Love Hypothesis",
+      author: "Ali Hazelwood",
+      img: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1747519081i/56732449.jpg",
+      genre: "Romance"
+    }
+  ];
+
+  const bookGrid = document.getElementById("bookGrid");
+
+  for (let i = 0; i < books.length; i++) {
+    const book = books[i];
+    bookGrid.innerHTML += `
+      <div class="book-card">
+        <img src="${book.img}" alt="${book.title} Cover">
+        <h3>${book.title}</h3>
+        <p>by ${book.author}</p>
+        <p>${book.genre}</p>
+      </div>
+    `;
+  }
+
+    //App Script
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz5kg5AyfcyyLjLUYYsCJa6MojkBIjMIRKRhJcUo6tr4-tNlOn5M50I7H6kKRE9qtNg/exec';
+    const form = document.getElementById('googleForm');
+
+    //When the user clicks the submit button, this function runs.
+    form.addEventListener('submit', e => {
+        e.preventDefault(); //This stops the browser’s default action of reloading
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            alert("Thank You! Your Recommendation is submitted successfully!");
+            form.reset();
+        })
+        .catch(error => alert('There was an error submitting your recommendation. Please try again later.', error.message));
+    });
+</script>
+
+
+</body>
+</html>
