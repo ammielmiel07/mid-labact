@@ -475,10 +475,20 @@
     //When the user clicks the submit button, this function runs.
     form.addEventListener('submit', e => {
         e.preventDefault(); //This stops the browser’s default action of reloading
+        
+        const ageInput = form.querySelector('input[name="age"]');
+        const age = parseInt(ageInput.value);
+
+        if (age < 18){
+          alert("Thanks for your recommendation! You're quite a young reader!");
+        } else {
+          alert("Thanks for your Recommendation!")
+        }
+
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
         .then(response => {
-            alert("Thank You! Your Recommendation is submitted successfully!");
             form.reset();
+            toggleForm();
         })
         .catch(error => alert('There was an error submitting your recommendation. Please try again later.', error.message));
     });
